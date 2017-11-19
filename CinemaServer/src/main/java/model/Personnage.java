@@ -66,21 +66,21 @@ public class Personnage {
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "NoFilm", referencedColumnName = "NoFilm", nullable = false)
-    public Film getFilmByNoFilm() {
-        return filmByNoFilm;
-    }
-
-    public void setFilmByNoFilm(Film filmByNoFilm) {
-        this.filmByNoFilm = filmByNoFilm;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "NoAct", referencedColumnName = "NoAct", nullable = false)
-    public Acteur getActeurByNoAct() {
-        return acteurByNoAct;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "NoFilm", referencedColumnName = "NoFilm", nullable = false)
+//    public Film getFilmByNoFilm() {
+//        return filmByNoFilm;
+//    }
+//
+//    public void setFilmByNoFilm(Film filmByNoFilm) {
+//        this.filmByNoFilm = filmByNoFilm;
+//    }
+//
+//    @ManyToOne
+//    @JoinColumn(name = "NoAct", referencedColumnName = "NoAct", nullable = false)
+//    public Acteur getActeurByNoAct() {
+//        return acteurByNoAct;
+//    }
 
     public void setActeurByNoAct(Acteur acteurByNoAct) {
         this.acteurByNoAct = acteurByNoAct;
