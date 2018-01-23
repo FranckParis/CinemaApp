@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="Movies">
+        <menu>
+            <item
+                android:id="@+id/nav_list"
+                android:icon="@drawable/ic_menu_share"
+                android:title="List" />
+            <item
+                android:id="@+id/nav_search"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Search" />
+        </menu>
+    </item>
+
+</menu>
