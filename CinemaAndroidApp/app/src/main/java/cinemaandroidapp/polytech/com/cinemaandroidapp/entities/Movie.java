@@ -80,7 +80,7 @@ public class Movie {
                 ", releaseDate=" + releaseDate +
                 ", budget=" + budget +
                 ", benefits=" + benefits +
-                ", cat=" + cat +
+                ", cat=" + cat.toString() +
                 '}';
     }
 }
