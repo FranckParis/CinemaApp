@@ -3,5 +3,6 @@ export class Film {
               public duree: number,
               public dateSortie: string,
               public budget: number,
-              public montantRecette: number) { }
+              public montantRecette: number,
+              public libelleCat: string) { }
 }

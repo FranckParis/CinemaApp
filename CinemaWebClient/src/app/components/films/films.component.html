@@ -6,12 +6,14 @@
     <th>Date de sortie</th>
     <th>Budget</th>
     <th>Recette</th>
+    <th>Catégorie</th>
   </tr>
   <tr *ngFor="let film of films">
     <td>{{film.titre}}</td>
     <td>{{film.duree}}</td>
     <td>{{film.dateSortie}}</td>
-    <td>{{film.budget}} $</td>
-    <td>{{film.montantRecette}} $</td>
+    <td>{{film.budget}}$</td>
+    <td>{{film.montantRecette}}$</td>
+    <td>{{film.libelleCat}}</td>
   </tr>
 </table>

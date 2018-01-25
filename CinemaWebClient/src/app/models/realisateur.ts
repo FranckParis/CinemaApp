@@ -1,4 +1,4 @@
 export class Realisateur {
-  constructor(public nom: string,
-              public prenom: string) { }
+  constructor(public nomRea: string,
+              public prenRea: string) { }
 }

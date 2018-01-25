@@ -1,3 +1,11 @@
-<p>
-  realisateurs works!
-</p>
+<h1>Réalisateurs</h1>
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Prénom</th>
+  </tr>
+  <tr *ngFor="let realisateur of realisateurs">
+    <td>{{realisateur.nomRea}}</td>
+    <td>{{realisateur.prenRea}}</td>
+  </tr>
+</table>
