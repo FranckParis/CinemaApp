@@ -1,13 +1,15 @@
 package cinemaandroidapp.polytech.com.cinemaandroidapp.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 /**
  * Created by franck on 23/01/18.
  */
 
-public class Movie {
+public class Movie implements Serializable{
 
+    private int id;
     private String title;
     private int length;
     private Date releaseDate;
@@ -15,7 +17,8 @@ public class Movie {
     private int benefits;
     private Category cat;
 
-    public Movie(String title, int length, Date releaseDate, int budget, int benefits, Category cat) {
+    public Movie(int id, String title, int length, Date releaseDate, int budget, int benefits, Category cat) {
+        this.id = id;
         this.title = title;
         this.length = length;
         this.releaseDate = releaseDate;
@@ -70,6 +73,14 @@ public class Movie {
 
     public void setCat(Category cat) {
         this.cat = cat;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
