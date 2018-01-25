@@ -14,11 +14,11 @@
     <td>{{film.dateSortie}}</td>
     <td>{{film.budget}}$</td>
     <td>{{film.montantRecette}}$</td>
-    <td>{{film.libelleCat}}</td>
+    <td>{{film.categorie.libelleCat}}</td>
     <td>
-      <a routerLink="/film/{{film.noFilm}}">Détails</a>
-      <a routerLink="/films">Modifier</a>
-      <a routerLink="/films">Supprimer</a>
+      <button routerLink="/film/{{film.noFilm}}">Détails</button>
+      <button routerLink="/films">Modifier</button>
+      <button routerLink="/films">Supprimer</button>
     </td>
   </tr>
 </table>

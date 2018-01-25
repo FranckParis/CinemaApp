@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FilmsProvider} from '../../../providers/filmsProvider';
 import { Film } from '../../../models/film';
 import {ActivatedRoute} from '@angular/router';
+import {PersonnagesProvider} from '../../../providers/personnagesProvider';
+import {ActeursProvider} from '../../../providers/acteursProvider';
 
 @Component({
   selector: 'app-film',
@@ -12,14 +14,14 @@ export class FilmComponent implements OnInit {
 
   film: Film;
 
-  constructor(private route: ActivatedRoute, private filmsProvider: FilmsProvider) { }
+  constructor(private route: ActivatedRoute, private filmsProvider: FilmsProvider, private personnagesProvider: PersonnagesProvider, private acteursProvider: ActeursProvider) { }
 
   ngOnInit() {
     this.getFilm();
   }
 
   getFilm() {
-    const id: number = +this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.filmsProvider.getById(id).subscribe(film => {
       this.parseFilm(film);
     });
@@ -32,10 +34,9 @@ export class FilmComponent implements OnInit {
     const dateSortie = film.dateSortie;
     const budget = film.budget;
     const montantRecette = film.montantRecette;
-    let libelleCat;
+    const personnages = this.personnagesProvider.getByIdFilm(noFilm);
     this.filmsProvider.getCategorie(film._links.categorieByCodeCat.href).subscribe(categorie => {
-      libelleCat = categorie.libelleCat;
-      this.film = new Film(noFilm, titre, duree, dateSortie, budget, montantRecette, libelleCat);
+      this.film = new Film(noFilm, titre, duree, dateSortie, budget, montantRecette, categorie, personnages);
     });
   }
 

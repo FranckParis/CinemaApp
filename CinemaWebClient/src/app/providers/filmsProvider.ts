@@ -14,12 +14,25 @@ export class FilmsProvider {
     return this.http.get(url).map(response => response.json()._embedded.films as Film[]);
   }
 
-  getById(id: number): Observable<Film> {
+  getById(id: any): Observable<Film> {
     const url = `http://localhost:8080/films/${id}`;
     return this.http.get(url).map(response => response.json() as Film);
   }
 
   getCategorie(url: string): Observable<Categorie> {
     return this.http.get(url).map(response => response.json() as Categorie);
+  }
+
+  getByIdRea(id: number): string[] {
+    const response: string[] = [];
+    const allFilms = this.getAll();
+    allFilms.forEach((films) => {
+      films.forEach((film) => {
+        if (film.noFilm === id) {
+          response.push(film.titre);
+        }
+      });
+    });
+    return response;
   }
 }

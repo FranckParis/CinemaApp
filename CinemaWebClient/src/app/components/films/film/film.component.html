@@ -1,10 +1,16 @@
 <h1>Détails d'un film :</h1>
-<h2>{{ film.titre }}</h2>
-<ul>
-  <li>Titre : {{film.titre}}</li>
-  <li>Durée : {{film.duree}}min</li>
-  <li>Catégorie : {{film.libelleCat}}</li>
-  <li>Date de sortie : {{film.dateSortie}}</li>
-  <li>Budget : {{film.budget}}</li>
-  <li>Recette : {{film.montantRecette}}</li>
-</ul>
+<div *ngIf="film">
+  <ul>
+    <li>Titre : {{this.film.titre}}</li>
+    <li>Durée : {{this.film.duree}}min</li>
+    <li>Catégorie : {{this.film.categorie.libelleCat}}</li>
+    <li>Date de sortie : {{this.film.dateSortie}}</li>
+    <li>Budget : {{this.film.budget}}</li>
+    <li>Recette : {{this.film.montantRecette}}</li>
+    <li>Personnages :
+      <ul>
+        <li *ngFor="let personnage of film.personnages">{{personnage.nomPers}}</li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,12 @@
+<h1>Détails du réalisateur</h1>
+<div *ngIf="realisateur">
+  <ul>
+    <li>Nom : {{realisateur.nomRea}}</li>
+    <li>Prénom : {{realisateur.prenRea}}</li>
+    <li>Films :
+      <ul>
+        <li *ngFor="let film of realisateur.films">{{film}}</li>
+      </ul>
+    </li>
+  </ul>
+</div>

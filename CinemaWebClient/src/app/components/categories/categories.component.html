@@ -1,0 +1,15 @@
+<h1>Réalisateurs</h1>
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Libélé</th>
+  </tr>
+  <tr *ngFor="let categorie of categories">
+    <td>{{categorie.codeCat}}</td>
+    <td>{{categorie.libelleCat}}</td>
+    <td>
+      <button routerLink="/categories">Modifier</button>
+      <button routerLink="/categories">Supprimer</button>
+    </td>
+  </tr>
+</table>

@@ -1,3 +1,4 @@
 export class Categorie {
-  constructor(public libelleCat: string) { }
+  constructor(public codeCat: String,
+              public libelleCat: string) { }
 }

@@ -1,3 +1,7 @@
+import {Categorie} from './categorie';
+import {Personnage} from './personnage';
+import {Acteur} from './acteur';
+
 export class Film {
   constructor(public noFilm: number,
               public titre: string,
@@ -5,5 +9,6 @@ export class Film {
               public dateSortie: string,
               public budget: number,
               public montantRecette: number,
-              public libelleCat: string) { }
+              public categorie: Categorie,
+              public personnages: Personnage[]) { }
 }

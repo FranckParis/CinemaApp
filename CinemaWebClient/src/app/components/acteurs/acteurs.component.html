@@ -1,3 +1,40 @@
-<p>
-  acteurs works!
-</p>
+<h1>Acteurs</h1>
+<div class="container">
+    <div class="form-group">
+      <label for="nomAct">Nom</label>
+      <input [(ngModel)]="acteur.nomAct" type="text" class="form-control" id="nomAct" required>
+    </div>
+
+    <div class="form-group">
+      <label for="prenAct">Prenom</label>
+      <input [(ngModel)]="acteur.prenAct" type="text" class="form-control" id="prenAct" required>
+    </div>
+
+    <div class="form-group">
+      <label for="dateNaiss">Date de naissance</label>
+      <input [(ngModel)]="acteur.dateNaiss" type="text" class="form-control" id="dateNaiss" required>
+    </div>
+
+    <div class="form-group">
+      <label for="dateDeces">Date de déces</label>
+      <input [(ngModel)]="acteur.dateDeces" type="text" class="form-control" id="dateDeces">
+    </div>
+
+    <button (click)="add(acteur)" type="submit" class="btn btn-success">Submit</button>
+
+</div>
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Prenom</th>
+  </tr>
+  <tr *ngFor="let acteur of acteurs">
+    <td>{{acteur.nomAct}}</td>
+    <td>{{acteur.prenAct}}</td>
+    <td>
+      <button routerLink="/acteur/{{acteur.noAct}}">Détails</button>
+      <button routerLink="/acteurs">Modifier</button>
+      <button (click)="delete(acteur.noAct)">Supprimer</button>
+    </td>
+  </tr>
+</table>

@@ -13,4 +13,17 @@ export class PersonnagesProvider {
     return this.http.get(url).map(response => response.json()._embedded.personnages as Personnage[]);
   }
 
+  getByIdFilm(id: number): Personnage[] {
+    const response: Personnage[] = [];
+    const allPersonnages = this.getPersonnages();
+    allPersonnages.forEach((personnages) => {
+      personnages.forEach((personnage) => {
+        if (personnage.noFilm === id) {
+          response.push(personnage);
+        }
+      });
+    });
+    return response;
+  }
+
 }

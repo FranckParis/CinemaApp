@@ -7,5 +7,10 @@
   <tr *ngFor="let realisateur of realisateurs">
     <td>{{realisateur.nomRea}}</td>
     <td>{{realisateur.prenRea}}</td>
+    <td>
+      <button routerLink="/realisateur/{{realisateur.noRea}}">Détails</button>
+      <button routerLink="/realisateurs">Modifier</button>
+      <button routerLink="/realisateurs">Supprimer</button>
+    </td>
   </tr>
 </table>

@@ -14,6 +14,12 @@ import { PersonnagesComponent } from './components/personnages/personnages.compo
 import {PersonnagesProvider} from './providers/personnagesProvider';
 import { ActeursComponent } from './components/acteurs/acteurs.component';
 import { FilmComponent } from './components/films/film/film.component';
+import { RealisateurComponent } from './components/realisateurs/realisateur/realisateur.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import {CategorieProvider} from './providers/categorieProvider';
+import {ActeursProvider} from './providers/acteursProvider';
+import { ActeurComponent } from './components/acteurs/acteur/acteur.component';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -23,17 +29,24 @@ import { FilmComponent } from './components/films/film/film.component';
     RealisateursComponent,
     PersonnagesComponent,
     ActeursComponent,
-    FilmComponent
+    FilmComponent,
+    RealisateurComponent,
+    CategoriesComponent,
+    ActeurComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserModule,
+    FormsModule
   ],
   providers: [
     FilmsProvider,
     RealisateursProvider,
-    PersonnagesProvider
+    PersonnagesProvider,
+    CategorieProvider,
+    ActeursProvider
   ],
   bootstrap: [AppComponent]
 })

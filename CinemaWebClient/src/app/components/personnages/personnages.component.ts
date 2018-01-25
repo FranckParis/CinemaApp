@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Personnage} from '../../models/personnage';
 import {PersonnagesProvider} from '../../providers/personnagesProvider';
+import {FilmsProvider} from '../../providers/filmsProvider';
 
 @Component({
   selector: 'app-personnages',
@@ -9,12 +10,25 @@ import {PersonnagesProvider} from '../../providers/personnagesProvider';
 })
 export class PersonnagesComponent implements OnInit {
 
-  personnages: Personnage[];
+  personnages: Personnage[] = [];
 
-  constructor(private personnageProvider: PersonnagesProvider) { }
+  constructor(private personnageProvider: PersonnagesProvider, private filmsProvider: FilmsProvider) { }
 
   ngOnInit() {
-    this.personnageProvider.getPersonnages().subscribe(personnages => this.personnages = personnages);
+    this.personnageProvider.getPersonnages().subscribe(personnages => {
+      this.parsePersonnages(personnages);
+    });
+  }
+
+  parsePersonnages(personnages: any) {
+    personnages.forEach((personnage) => {
+      const noFilm = personnage.noFilm;
+      const noAct = personnage.noAct;
+      const nomPers = personnage.nomPers;
+      this.filmsProvider.getById(noFilm).subscribe(film => {
+        this.personnages.push(new Personnage(noFilm, noAct, nomPers, film.titre));
+      });
+    });
   }
 
 }
