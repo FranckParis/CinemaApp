@@ -15,7 +15,7 @@ export class FilmsProvider {
   }
 
   getById(id: number): Observable<Film> {
-    const url = `http://localhost:8080/film/${id}`;
+    const url = `http://localhost:8080/films/${id}`;
     return this.http.get(url).map(response => response.json() as Film);
   }
 

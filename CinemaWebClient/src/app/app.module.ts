@@ -13,6 +13,7 @@ import {RealisateursProvider} from './providers/realisateursProvider';
 import { PersonnagesComponent } from './components/personnages/personnages.component';
 import {PersonnagesProvider} from './providers/personnagesProvider';
 import { ActeursComponent } from './components/acteurs/acteurs.component';
+import { FilmComponent } from './components/films/film/film.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ActeursComponent } from './components/acteurs/acteurs.component';
     FilmsComponent,
     RealisateursComponent,
     PersonnagesComponent,
-    ActeursComponent
+    ActeursComponent,
+    FilmComponent
   ],
   imports: [
     BrowserModule,

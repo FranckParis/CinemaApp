@@ -1,5 +1,6 @@
 export class Film {
-  constructor(public titre: string,
+  constructor(public noFilm: number,
+              public titre: string,
               public duree: number,
               public dateSortie: string,
               public budget: number,
