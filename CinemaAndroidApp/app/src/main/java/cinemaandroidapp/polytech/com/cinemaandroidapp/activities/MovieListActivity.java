@@ -1,5 +1,6 @@
 package cinemaandroidapp.polytech.com.cinemaandroidapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -70,6 +71,7 @@ public class MovieListActivity extends AppCompatActivity {
                             for(int i = 0 ; i < moviesJson.length(); i++) {
                                 JSONObject currentMovie = moviesJson.getJSONObject(i);
 
+                                int id = Integer.parseInt(currentMovie.getString("id"));
                                 String title = currentMovie.getString("titre");
                                 int length = Integer.parseInt(currentMovie.getString("duree"));
                                 Date releaseDate = Date.valueOf(currentMovie.getString("dateSortie"));
@@ -79,7 +81,7 @@ public class MovieListActivity extends AppCompatActivity {
                                 //Add category id to sent JSON
                                 Category cat = new Category(1);
 
-                                Movie m = new Movie(title, length, releaseDate, budget, benefits, cat);
+                                Movie m = new Movie(id, title, length, releaseDate, budget, benefits, cat);
                                 movies.add(m);
                             }
                             System.out.println(movies);
@@ -87,10 +89,10 @@ public class MovieListActivity extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Date d = Date.valueOf("1966-12-01");
-                            movies.add(new Movie("",0, d,0,0, new Category(1)));
+                            movies.add(new Movie(0,"",0, d,0,0, new Category(1)));
                         }
 
-                        adapter = new MovieAdapter(getApplicationContext(), movies);
+                        adapter = new MovieAdapter(MovieListActivity.this, movies);
                         movieList.setAdapter(adapter);
 
                         movieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -98,6 +100,10 @@ public class MovieListActivity extends AppCompatActivity {
                             @Override
                             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                                Movie selectedMovie = movies.get(position);
+                                Intent i = new Intent(MovieListActivity.this, MovieDetailsActivity.class);
+                                i.putExtra("selectedMovie", selectedMovie);
+                                startActivity(i);
                             }
                         });
                     }
@@ -108,7 +114,7 @@ public class MovieListActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 System.out.println("That didn't work!");
                 Date d = Date.valueOf("1966-12-01");
-                movies.add(new Movie("",0, d,0,0, new Category(1)));
+                movies.add(new Movie(0,"",0, d,0,0, new Category(1)));
                 adapter = new MovieAdapter(getApplicationContext(), movies);
                 movieList.setAdapter(adapter);
             }
