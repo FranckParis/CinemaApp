@@ -1,0 +1,17 @@
+<h1>Films</h1>
+<table>
+  <tr>
+    <th>Titre</th>
+    <th>Durée</th>
+    <th>Date de sortie</th>
+    <th>Budget</th>
+    <th>Recette</th>
+  </tr>
+  <tr *ngFor="let film of films">
+    <td>{{film.titre}}</td>
+    <td>{{film.duree}}</td>
+    <td>{{film.dateSortie}}</td>
+    <td>{{film.budget}} $</td>
+    <td>{{film.montantRecette}} $</td>
+  </tr>
+</table>
