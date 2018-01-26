@@ -35,4 +35,14 @@ export class FilmsProvider {
     });
     return response;
   }
+
+  delete(id: any): Observable<boolean> {
+    const url = `http://localhost:8080/films/${id}`;
+    return this.http.delete(url).map(response => response.ok);
+  }
+
+  add(film: Film): Observable<boolean> {
+    const url = `http://localhost:8080/films`;
+    return this.http.post(url, film).map(response => response.ok);
+  }
 }

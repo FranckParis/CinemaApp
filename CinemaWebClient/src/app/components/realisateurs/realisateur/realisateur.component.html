@@ -1,12 +1,34 @@
-<h1>Détails du réalisateur</h1>
-<div *ngIf="realisateur">
-  <ul>
-    <li>Nom : {{realisateur.nomRea}}</li>
-    <li>Prénom : {{realisateur.prenRea}}</li>
-    <li>Films :
-      <ul>
-        <li *ngFor="let film of realisateur.films">{{film}}</li>
-      </ul>
-    </li>
-  </ul>
+<div class="container">
+
+  <h1>Détails du réalisateur</h1>
+
+  <div class="row">
+    <div class="col-md-2"></div>
+
+    <div class="card">
+      <div class="card-body">
+
+        <div *ngIf="realisateur">
+          <table class="table">
+            <tr>
+              <td>Nom :</td>
+              <td>{{realisateur.nomRea}}</td>
+            </tr>
+            <tr><td>Prénom :</td>
+              <td>{{realisateur.prenRea}}</td>
+            </tr>
+            <tr>
+              <td>Films :</td>
+              <table>
+                <tr *ngFor="let film of realisateur.films"><td>{{film}}</td></tr>
+              </table>
+            </tr>
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
 </div>

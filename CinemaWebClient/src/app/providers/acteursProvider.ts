@@ -6,7 +6,6 @@ import {Acteur} from '../models/acteur';
 
 @Injectable()
 export class ActeursProvider {
-  protected options;
 
   constructor(private http: Http) {
   }

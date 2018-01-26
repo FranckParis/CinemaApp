@@ -20,6 +20,7 @@ import {CategorieProvider} from './providers/categorieProvider';
 import {ActeursProvider} from './providers/acteursProvider';
 import { ActeurComponent } from './components/acteurs/acteur/acteur.component';
 import {FormsModule} from '@angular/forms';
+import {DataTablesModule} from 'angular-datatables';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {FormsModule} from '@angular/forms';
     HttpModule,
     AppRoutingModule,
     BrowserModule,
-    FormsModule
+    FormsModule,
+    DataTablesModule
   ],
   providers: [
     FilmsProvider,

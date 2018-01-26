@@ -26,4 +26,9 @@ export class PersonnagesProvider {
     return response;
   }
 
+  add(personnage: Personnage): Observable<boolean> {
+    const url = `http://localhost:8080/personnages`;
+    return this.http.post(url, personnage).map(response => response.ok);
+  }
+
 }

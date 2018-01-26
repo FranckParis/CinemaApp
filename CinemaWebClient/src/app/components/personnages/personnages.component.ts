@@ -10,11 +10,13 @@ import {FilmsProvider} from '../../providers/filmsProvider';
 })
 export class PersonnagesComponent implements OnInit {
 
+  personnage: Personnage;
   personnages: Personnage[] = [];
 
   constructor(private personnageProvider: PersonnagesProvider, private filmsProvider: FilmsProvider) { }
 
   ngOnInit() {
+    this.personnage = new Personnage(null, null, null, null);
     this.personnageProvider.getPersonnages().subscribe(personnages => {
       this.parsePersonnages(personnages);
     });
@@ -28,6 +30,12 @@ export class PersonnagesComponent implements OnInit {
       this.filmsProvider.getById(noFilm).subscribe(film => {
         this.personnages.push(new Personnage(noFilm, noAct, nomPers, film.titre));
       });
+    });
+  }
+
+  add(personnage: Personnage) {
+    this.personnageProvider.add(personnage).subscribe( ret => {
+      console.log(ret);
     });
   }
 

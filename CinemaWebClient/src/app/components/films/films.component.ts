@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FilmsProvider } from '../../providers/filmsProvider';
 import { Film } from '../../models/film';
-import {PersonnagesProvider} from '../../providers/personnagesProvider';
 
 @Component({
   selector: 'app-films',
@@ -10,11 +9,13 @@ import {PersonnagesProvider} from '../../providers/personnagesProvider';
 })
 export class FilmsComponent implements OnInit {
 
+  film: Film;
   films: Film[] = [];
 
-  constructor(private filmsProvider: FilmsProvider, private personnagesProvider: PersonnagesProvider) { }
+  constructor(private filmsProvider: FilmsProvider) { }
 
   ngOnInit() {
+    this.film = new Film(null, null, null, null, null, null, null, null);
     this.filmsProvider.getAll().subscribe(films => {
       this.parseFilms(films);
     });
@@ -31,6 +32,18 @@ export class FilmsComponent implements OnInit {
       this.filmsProvider.getCategorie(film._links.categorieByCodeCat.href).subscribe(categorie => {
         this.films.push(new Film(noFilm, titre, duree, dateSortie, budget, montantRecette, categorie, null));
       });
+    });
+  }
+
+  delete(id: any) {
+    this.filmsProvider.delete(id).subscribe( ret => {
+      console.log(ret);
+    });
+  }
+
+  add(film: Film) {
+    this.filmsProvider.add(film).subscribe( ret => {
+      console.log(ret);
     });
   }
 
