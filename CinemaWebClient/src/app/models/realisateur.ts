@@ -1,4 +1,6 @@
 export class Realisateur {
-  constructor(public nom: string,
-              public prenom: string) { }
+  constructor(public noRea: number,
+              public nomRea: string,
+              public prenRea: string,
+              public films: string[]) { }
 }

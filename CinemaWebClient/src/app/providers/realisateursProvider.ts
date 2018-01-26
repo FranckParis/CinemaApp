@@ -13,8 +13,18 @@ export class RealisateursProvider {
     return this.http.get(url).map(response => response.json()._embedded.realisateurs as Realisateur[]);
   }
 
-  getById(id: number): Observable<Realisateur> {
-    const url = `http://localhost:8080/realisateur/${id}`;
+  getById(id: any): Observable<Realisateur> {
+    const url = `http://localhost:8080/realisateurs/${id}`;
     return this.http.get(url).map(response => response.json() as Realisateur);
+  }
+
+  delete(id: any): Observable<boolean> {
+    const url = `http://localhost:8080/realisateurs/${id}`;
+    return this.http.delete(url).map(response => response.ok);
+  }
+
+  add(realisateur: Realisateur): Observable<boolean> {
+    const url = `http://localhost:8080/realisateurs`;
+    return this.http.post(url, realisateur).map(response => response.ok);
   }
 }

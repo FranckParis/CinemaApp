@@ -14,6 +14,7 @@ public class Film {
     private Date dateSortie;
     private int budget;
     private int montantRecette;
+    private int noRea;
     private Categorie categorieByCodeCat;
 
     @Id
@@ -74,6 +75,16 @@ public class Film {
 
     public void setMontantRecette(int montantRecette) {
         this.montantRecette = montantRecette;
+    }
+
+    @Basic
+    @Column(name = "NoRea")
+    public int getNoRea() {
+        return noRea;
+    }
+
+    public void setNoRea(int noRea) {
+        this.noRea = noRea;
     }
 
     @Override

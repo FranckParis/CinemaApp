@@ -1,0 +1,36 @@
+<div class="container">
+
+  <h1>Détails d'un acteur :</h1>
+
+  <div class="row">
+    <div class="col-md-2"></div>
+
+    <div class="card">
+      <div class="card-body">
+
+          <div *ngIf="acteur">
+            <table class="table">
+              <tr>
+                <td>Nom :</td>
+                <td>{{acteur.nomAct}}</td>
+              </tr>
+              <tr><td>Prenom :</td>
+                <td>{{acteur.prenAct}}</td>
+              </tr>
+              <tr>
+                <td>Date de naissance :</td>
+                <td>{{acteur.dateNaiss}}</td>
+              </tr>
+              <tr>
+                <td>Date de déces :</td>
+                <td>{{acteur.dateDeces}}</td>
+              </tr>
+            </table>
+          </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

@@ -1,17 +1,89 @@
-<h1>Films</h1>
-<table>
-  <tr>
-    <th>Titre</th>
-    <th>Durée</th>
-    <th>Date de sortie</th>
-    <th>Budget</th>
-    <th>Recette</th>
-  </tr>
-  <tr *ngFor="let film of films">
-    <td>{{film.titre}}</td>
-    <td>{{film.duree}}</td>
-    <td>{{film.dateSortie}}</td>
-    <td>{{film.budget}} $</td>
-    <td>{{film.montantRecette}} $</td>
-  </tr>
-</table>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel">Nouveau film</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+      </div>
+      <div class="modal-body">
+
+        <div class="container">
+          <div class="form-group">
+            <label for="titre">Titre</label>
+            <input [(ngModel)]="film.titre" type="text" class="form-control" id="titre" required>
+          </div>
+
+          <div class="form-group">
+            <label for="duree">Durée</label>
+            <input [(ngModel)]="film.duree" type="text" class="form-control" id="duree" required>
+          </div>
+
+          <div class="form-group">
+            <label for="dateSortie">Date de sortie</label>
+            <input [(ngModel)]="film.dateSortie" type="text" class="form-control" id="dateSortie" required>
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Budget</label>
+            <input [(ngModel)]="film.budget" type="text" class="form-control" id="budget">
+          </div>
+
+          <div class="form-group">
+            <label for="montantRecette">Recette</label>
+            <input [(ngModel)]="film.montantRecette" type="text" class="form-control" id="montantRecette">
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button (click)="add(film)" type="submit" class="btn btn-success">Enregistrer</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid">
+
+  <h1>Films</h1>
+
+  <table class="table table-hover">
+    <tr>
+      <th>Titre</th>
+      <th>Durée</th>
+      <th>Date de sortie</th>
+      <th>Budget</th>
+      <th>Recette</th>
+      <th>Catégorie</th>
+      <th>Plus</th>
+    </tr>
+    <tr *ngFor="let film of films">
+      <td>{{film.titre}}</td>
+      <td>{{film.duree}}</td>
+      <td>{{film.dateSortie}}</td>
+      <td>{{film.budget}} $</td>
+      <td>{{film.montantRecette}} $</td>
+      <td>{{film.categorie.libelleCat}}</td>
+      <td>
+        <button routerLink="/film/{{film.noFilm}}" type="button" class="btn btn-info" title="Détails"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <button (click)="delete(film.noFilm)" routerLink="/films" type="button" class="btn btn-danger" title="Supprimer"><i class="fa fa-times" aria-hidden="true"></i></button>
+      </td>
+    </tr>
+  </table>
+
+  <div class="container-fluid">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+      Ajouter un film
+    </button>
+  </div>
+
+</div>
