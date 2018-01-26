@@ -16,8 +16,9 @@ public class Movie implements Serializable{
     private int budget;
     private int benefits;
     private Category cat;
+    private Director dir;
 
-    public Movie(int id, String title, int length, Date releaseDate, int budget, int benefits, Category cat) {
+    public Movie(int id, String title, int length, Date releaseDate, int budget, int benefits, Category cat, Director dir) {
         this.id = id;
         this.title = title;
         this.length = length;
@@ -25,6 +26,7 @@ public class Movie implements Serializable{
         this.budget = budget;
         this.benefits = benefits;
         this.cat = cat;
+        this.dir = dir;
     }
 
     public String getTitle() {
@@ -83,15 +85,24 @@ public class Movie implements Serializable{
         this.id = id;
     }
 
+    public Director getDir() {
+        return dir;
+    }
+
+    public void setDir(Director dir) {
+        this.dir = dir;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", length=" + length +
                 ", releaseDate=" + releaseDate +
                 ", budget=" + budget +
                 ", benefits=" + benefits +
-                ", cat=" + cat.toString() +
+                ", cat=" + cat +
                 '}';
     }
 }

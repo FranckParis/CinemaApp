@@ -41,13 +41,19 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/movieBudget" />
 
-    <Spinner
+    <TextView
         android:id="@+id/movieCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/movieBenefits" />
+
+    <TextView
+        android:id="@+id/movieDirector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/movieCategory" />
 
     <Button
         android:text="Edit"
@@ -55,7 +61,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="editMovie"
-        app:layout_constraintTop_toBottomOf="@+id/movieCategory" />
+        app:layout_constraintTop_toBottomOf="@+id/movieDirector" />
         />
 
     <Button

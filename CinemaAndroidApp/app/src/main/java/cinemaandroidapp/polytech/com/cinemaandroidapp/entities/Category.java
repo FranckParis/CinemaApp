@@ -1,10 +1,12 @@
 package cinemaandroidapp.polytech.com.cinemaandroidapp.entities;
 
+import java.io.Serializable;
+
 /**
  * Created by franck on 23/01/18.
  */
 
-public class Category {
+public class Category implements Serializable{
 
     private int id;
     private String name;

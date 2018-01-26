@@ -25,16 +25,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this,MovieAddActivity.class);
-                startActivity(i);
-                System.out.println("Activity changed.");
-            }
-        });
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -69,11 +59,6 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -84,13 +69,19 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_list) {
-
             Intent i = new Intent(MainActivity.this,MovieListActivity.class);
             startActivity(i);
             System.out.println("Activity changed.");
 
-        } else if (id == R.id.nav_search) {
+        } else if (id == R.id.search) {
+            Intent intent = new Intent(MainActivity.this,MovieSearchActivity.class);
+            startActivity(intent);
+            System.out.println("Activity changed.");
 
+        }else if (id == R.id.nav_add) {
+            Intent i = new Intent(MainActivity.this,MovieAddActivity.class);
+            startActivity(i);
+            System.out.println("Activity changed.");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

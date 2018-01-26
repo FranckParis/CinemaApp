@@ -35,6 +35,7 @@ public class MovieEditActivity extends AppCompatActivity {
     private EditText formBenefits;
     private EditText formReleaseDate;
     private Spinner formCategory;
+    private Spinner formDirector;
 
     private Button sendButton;
 
@@ -54,16 +55,22 @@ public class MovieEditActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         this.formCategory.setAdapter(adapter);
 
+        this.formDirector = findViewById(R.id.formDirector);
+        String[] items2 = new String[]{"Oury", "Chabrol", "Besson", "Besnard"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items2);
+        this.formDirector.setAdapter(adapter2);
+
         this.sendButton = findViewById(R.id.sendButton);
 
         //Setting text
 
-        this.formTitle.setHint(getMovie().getTitle());
-        this.formBenefits.setHint(getMovie().getBenefits());
-        this.formBudget.setHint(getMovie().getBudget());
-        this.formLength.setHint(getMovie().getLength());
-        this.formReleaseDate.setHint(String.valueOf(getMovie().getReleaseDate()));
+        this.formTitle.setText(getMovie().getTitle());
+        this.formBenefits.setText(String.valueOf(getMovie().getBenefits()));
+        this.formBudget.setText(String.valueOf(getMovie().getBudget()));
+        this.formLength.setText(String.valueOf(getMovie().getLength()));
+        this.formReleaseDate.setText(String.valueOf(getMovie().getReleaseDate()));
         this.formCategory.setSelection(getMovie().getCat().getId());
+        this.formDirector.setSelection(getMovie().getDir().getId());
     }
 
     public Movie getMovie(){

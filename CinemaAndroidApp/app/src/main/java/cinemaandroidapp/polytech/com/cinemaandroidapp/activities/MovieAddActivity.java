@@ -33,6 +33,7 @@ public class MovieAddActivity extends AppCompatActivity {
     private EditText formBenefits;
     private EditText formReleaseDate;
     private Spinner formCategory;
+    private Spinner formDirector;
 
     private Button sendButton;
 
@@ -51,6 +52,11 @@ public class MovieAddActivity extends AppCompatActivity {
         String[] items = new String[]{"Action", "Comedie", "Policier", "Western"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         this.formCategory.setAdapter(adapter);
+
+        this.formDirector = findViewById(R.id.formDirector);
+        String[] items2 = new String[]{"Oury", "Chabrol", "Besson", "Besnard"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items2);
+        this.formDirector.setAdapter(adapter2);
 
         this.sendButton = findViewById(R.id.sendButton);
     }
@@ -81,12 +87,14 @@ public class MovieAddActivity extends AppCompatActivity {
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("title", formTitle.toString());
-                params.put("releaseDate", formReleaseDate.toString());
+
+                /*params.put("titre", formTitle.toString());
+                params.put("duree", formLength.toString());
+                params.put("dateSortie", formReleaseDate.toString());
                 params.put("budget", formBudget.toString());
-                params.put("benefits", formBenefits.toString());
-                params.put("length", formLength.toString());
-                params.put("category", formCategory.toString());
+                params.put("montantRecette", formBenefits.toString());
+                params.put("noRea", String.valueOf(formDirector.getSelectedItemPosition()));
+                params.put("category", formCategory.toString());*/
 
                 return params;
             }

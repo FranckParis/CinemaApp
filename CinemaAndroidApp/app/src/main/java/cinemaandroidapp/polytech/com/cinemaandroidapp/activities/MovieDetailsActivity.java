@@ -29,6 +29,8 @@ public class MovieDetailsActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.movie_details_layout);
+
         this.printMovies(this.getMovie());
 
         this.editButton = findViewById(R.id.editButton);
@@ -48,6 +50,7 @@ public class MovieDetailsActivity extends AppCompatActivity{
         TextView movieBudget = (TextView) this.findViewById(R.id.movieBudget);
         TextView movieBenefits = (TextView) this.findViewById(R.id.movieBenefits);
         TextView movieCategory = (TextView) this.findViewById(R.id.movieCategory);
+        TextView movieDirector = (TextView) this.findViewById(R.id.movieDirector);
 
         movieTitle.setText("Title :" + m.getTitle());
         movieReleaseDate.setText("Release date :" + m.getReleaseDate());
@@ -55,6 +58,7 @@ public class MovieDetailsActivity extends AppCompatActivity{
         movieBudget.setText("Budget : " + m.getBudget());
         movieBenefits.setText("Benefits :" + m.getBenefits());
         movieCategory.setText("Category : " + m.getCat().getName());
+        movieDirector.setText("Director : " + m.getDir().getName() + " " + m.getDir().getSurname());
     }
 
 

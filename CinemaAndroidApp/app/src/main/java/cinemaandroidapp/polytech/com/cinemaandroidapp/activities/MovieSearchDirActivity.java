@@ -3,11 +3,8 @@ package cinemaandroidapp.polytech.com.cinemaandroidapp.activities;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,17 +20,16 @@ import org.json.JSONObject;
 import java.sql.Date;
 import java.util.ArrayList;
 
-import cinemaandroidapp.polytech.com.cinemaandroidapp.R;
 import cinemaandroidapp.polytech.com.cinemaandroidapp.adapters.MovieAdapter;
 import cinemaandroidapp.polytech.com.cinemaandroidapp.entities.Category;
 import cinemaandroidapp.polytech.com.cinemaandroidapp.entities.Director;
 import cinemaandroidapp.polytech.com.cinemaandroidapp.entities.Movie;
 
 /**
- * Created by franck on 23/01/18.
+ * Created by franck on 26/01/18.
  */
 
-public class MovieListActivity extends ListActivity {
+public class MovieSearchDirActivity extends ListActivity {
 
     private ArrayList<Movie> movies;
 
@@ -43,6 +39,12 @@ public class MovieListActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         this.movies = new ArrayList<>();
         listMovies();
+    }
+
+    public String getExtra(){
+        Intent i = getIntent();
+        String name = (String)i.getSerializableExtra("name");
+        return name;
     }
 
     public void listMovies(){
@@ -83,13 +85,21 @@ public class MovieListActivity extends ListActivity {
                                 movies.add(m);
                             }
 
-                            setListAdapter(new MovieAdapter(MovieListActivity.this, movies));
+                            ArrayList<Movie> moviesTemp = new ArrayList<>();
 
-                            MovieListActivity.this.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            for(Movie m : movies){
+                                if(m.getDir().getName().contains(getExtra())){
+                                    moviesTemp.add(m);
+                                }
+                            }
+
+                            setListAdapter(new MovieAdapter(MovieSearchDirActivity.this, moviesTemp));
+
+                            MovieSearchDirActivity.this.getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                    Intent intent = new Intent(MovieListActivity.this,MovieDetailsActivity.class);
+                                    Intent intent = new Intent(MovieSearchDirActivity.this,MovieDetailsActivity.class);
                                     intent.putExtra("selectedMovie", movies.get(i));
                                     System.out.println("SelectedMovie = "+ movies.get(i));
                                     startActivity(intent);
@@ -103,14 +113,14 @@ public class MovieListActivity extends ListActivity {
                             e.printStackTrace();
                         }
                     }
-                    
+
                 }, new Response.ErrorListener() {
 
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                System.out.println("That didn't work!");
-            }
-        });
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("That didn't work!");
+                    }
+                });
 
         // Add the request to the RequestQueue.
         queue.add(request);

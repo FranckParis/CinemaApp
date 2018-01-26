@@ -24,8 +24,31 @@
         </activity>
         <activity
             android:name=".activities.MovieListActivity"
-            android:label="MovieList"
-            android:parentActivityName=".activities.MainActivity">
+            android:label="MovieList">
+        </activity>
+        <activity
+            android:name=".activities.MovieDetailsActivity"
+            android:label="MovieDetails">
+        </activity>
+        <activity
+            android:name=".activities.MovieAddActivity"
+            android:label="MovieAdd">
+        </activity>
+        <activity
+            android:name=".activities.MovieEditActivity"
+            android:label="MovieEdit">
+        </activity>
+        <activity
+            android:name=".activities.MovieSearchActivity"
+            android:label="MovieSearch">
+        </activity>
+        <activity
+            android:name=".activities.MovieSearchTitleActivity"
+            android:label="MovieSearchTitle">
+        </activity>
+        <activity
+            android:name=".activities.MovieSearchDirActivity"
+            android:label="MovieSearchDir">
         </activity>
     </application>
 
