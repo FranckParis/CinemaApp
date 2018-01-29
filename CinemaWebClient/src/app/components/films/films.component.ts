@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FilmsProvider } from '../../providers/filmsProvider';
 import { Film } from '../../models/film';
+import {FilmNew} from '../../models/film_new';
 
 @Component({
   selector: 'app-films',
@@ -9,13 +10,13 @@ import { Film } from '../../models/film';
 })
 export class FilmsComponent implements OnInit {
 
-  film: Film;
+  film: FilmNew;
   films: Film[] = [];
 
   constructor(private filmsProvider: FilmsProvider) { }
 
   ngOnInit() {
-    this.film = new Film(null, null, null, null, null, null, null, null);
+    this.film = new FilmNew(null, null, null, null, null, null, null, null);
     this.filmsProvider.getAll().subscribe(films => {
       this.parseFilms(films);
     });

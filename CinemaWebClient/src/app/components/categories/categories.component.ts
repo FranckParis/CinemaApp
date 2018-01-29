@@ -11,24 +11,58 @@ export class CategoriesComponent implements OnInit {
 
   categories: Categorie[];
   categorie: Categorie;
+  validate: boolean;
+  failed: boolean;
 
   constructor(private categorieProvider: CategorieProvider) { }
 
-  ngOnInit() {
-    this.categorie = new  Categorie(null, null);
+  init() {
     this.categorieProvider.getAll().subscribe(categories => this.categories = categories);
+    this.categorie = new  Categorie(null, null);
+  }
+
+  ngOnInit() {
+    this.init();
   }
 
   delete(id: any) {
-    this.categorieProvider.delete(id).subscribe( ret => {
-      console.log(ret);
-    });
+    this.categorieProvider.delete(id).subscribe(
+      () => {
+        this.validate = true;
+        this.failed = null;
+
+        console.log('Success');
+      },
+      () => {
+        this.validate = null;
+        this.failed = true;
+
+        console.log('Failed');
+      },
+      () => {
+        this.init();
+      }
+    );
   }
 
   add(categorie: Categorie) {
-    this.categorieProvider.add(categorie).subscribe(ret => {
-      console.log(ret);
-    });
+    this.categorieProvider.add(categorie).subscribe(
+      () => {
+        this.validate = true;
+        this.failed = null;
+
+        console.log('Success');
+      },
+      () => {
+        this.validate = null;
+        this.failed = true;
+
+        console.log('Failed');
+      },
+      () => {
+        this.init();
+      }
+    );
   }
 
 }
