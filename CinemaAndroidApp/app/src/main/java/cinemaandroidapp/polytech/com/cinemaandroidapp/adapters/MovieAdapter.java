@@ -56,7 +56,7 @@ public class MovieAdapter extends BaseAdapter{
         TextView date=(TextView)convertView.findViewById(R.id.date);
 
         title.setText(movies.get(position).getTitle());
-        date.setText(String.valueOf(movies.get(position).getReleaseDate()));
+        date.setText(String.valueOf(movies.get(position).getReleaseDate()).split("-")[0]);
 
         return convertView;
     }

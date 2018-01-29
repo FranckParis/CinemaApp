@@ -52,13 +52,13 @@ public class MovieDetailsActivity extends AppCompatActivity{
         TextView movieCategory = (TextView) this.findViewById(R.id.movieCategory);
         TextView movieDirector = (TextView) this.findViewById(R.id.movieDirector);
 
-        movieTitle.setText("Title :" + m.getTitle());
-        movieReleaseDate.setText("Release date :" + m.getReleaseDate());
-        movieLength.setText("Length : " + m.getLength());
-        movieBudget.setText("Budget : " + m.getBudget());
-        movieBenefits.setText("Benefits :" + m.getBenefits());
-        movieCategory.setText("Category : " + m.getCat().getName());
-        movieDirector.setText("Director : " + m.getDir().getName() + " " + m.getDir().getSurname());
+        movieTitle.setText(m.getTitle());
+        movieReleaseDate.setText(String.valueOf(m.getReleaseDate()));
+        movieLength.setText(String.valueOf(m.getLength()));
+        movieBudget.setText(String.valueOf(m.getBudget()));
+        movieBenefits.setText(String.valueOf(m.getBenefits()));
+        movieCategory.setText(m.getCat().getName());
+        movieDirector.setText(m.getDir().getName() + " " + m.getDir().getSurname());
     }
 
 

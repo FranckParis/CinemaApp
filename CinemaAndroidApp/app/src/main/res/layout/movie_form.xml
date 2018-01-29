@@ -5,7 +5,8 @@
     android:orientation="vertical" >
 
     <TextView
-        android:text="New Movie"
+        android:text="Movie"
+        android:textSize="28sp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         />
@@ -45,12 +46,26 @@
         android:hint="Movie benefits"
         />
 
+    <TextView
+        android:text="Category"
+        android:textSize="20sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+
     <Spinner
         android:id="@+id/formCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/btn_dropdown"
         android:spinnerMode="dropdown"/>
+
+    <TextView
+        android:text="Director"
+        android:textSize="20sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
 
     <Spinner
         android:id="@+id/formDirector"

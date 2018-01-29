@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.MainActivity"
-            android:label="@string/app_name"
+            android:label="Cinema App"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,31 +24,37 @@
         </activity>
         <activity
             android:name=".activities.MovieListActivity"
-            android:label="MovieList">
+            android:label="Movie List"
+            android:parentActivityName=".activities.MainActivity">
         </activity>
         <activity
             android:name=".activities.MovieDetailsActivity"
-            android:label="MovieDetails">
+            android:label="Movie Details"
+            android:parentActivityName=".activities.MovieListActivity">
         </activity>
         <activity
             android:name=".activities.MovieAddActivity"
-            android:label="MovieAdd">
+            android:label="Movie Add"
+            android:parentActivityName=".activities.MainActivity">
         </activity>
         <activity
             android:name=".activities.MovieEditActivity"
-            android:label="MovieEdit">
+            android:label="Movie Edit">
         </activity>
         <activity
             android:name=".activities.MovieSearchActivity"
-            android:label="MovieSearch">
+            android:label="Movie Search"
+            android:parentActivityName=".activities.MainActivity">
         </activity>
         <activity
             android:name=".activities.MovieSearchTitleActivity"
-            android:label="MovieSearchTitle">
+            android:label="Movie Search by Title"
+            android:parentActivityName=".activities.MovieSearchActivity">
         </activity>
         <activity
             android:name=".activities.MovieSearchDirActivity"
-            android:label="MovieSearchDir">
+            android:label="Movie Search by Director"
+            android:parentActivityName=".activities.MovieSearchActivity">
         </activity>
     </application>
 
