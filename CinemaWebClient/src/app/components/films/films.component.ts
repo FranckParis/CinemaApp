@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FilmsProvider } from '../../providers/filmsProvider';
 import { Film } from '../../models/film';
 import {FilmNew} from '../../models/film_new';
+import {RealisateursProvider} from '../../providers/realisateursProvider';
+import {Realisateur} from '../../models/realisateur';
+import {Categorie} from '../../models/categorie';
+import {CategorieProvider} from '../../providers/categorieProvider';
 
 @Component({
   selector: 'app-films',
@@ -11,15 +15,49 @@ import {FilmNew} from '../../models/film_new';
 export class FilmsComponent implements OnInit {
 
   film: FilmNew;
+  realisateurs: Realisateur[] = [];
+  categories: Categorie[] = [];
   films: Film[] = [];
 
-  constructor(private filmsProvider: FilmsProvider) { }
+  validate: boolean;
+  failed: boolean;
 
-  ngOnInit() {
-    this.film = new FilmNew(null, null, null, null, null, null, null, null);
+  constructor(private filmsProvider: FilmsProvider, private realisateursProvider: RealisateursProvider, private categoriesProvider: CategorieProvider) { }
+
+  autoIncrement(): number {
+    let inc = 0;
+    this.films.forEach( film => {
+      if (film.noFilm > inc + 1) {
+        return inc + 1;
+      }
+      inc = film.noFilm;
+    });
+    return inc + 1;
+  }
+
+  init() {
     this.filmsProvider.getAll().subscribe(films => {
       this.parseFilms(films);
+      console.log('bayou1');
+
+      this.realisateursProvider.getRealisateurs().subscribe(realisateurs => {
+        this.realisateurs = realisateurs;
+        console.log('bayou2');
+
+        this.categoriesProvider.getAll().subscribe(categories => {
+          this.categories = categories;
+          console.log('bayou3');
+
+          this.film = new FilmNew(this.autoIncrement(), null, null, null, null, null, null, null);
+        });
+
+      });
+
     });
+  }
+
+  ngOnInit() {
+    this.init();
   }
 
   parseFilms(films: any) {
@@ -37,15 +75,44 @@ export class FilmsComponent implements OnInit {
   }
 
   delete(id: any) {
-    this.filmsProvider.delete(id).subscribe( ret => {
-      console.log(ret);
-    });
+    this.filmsProvider.delete(id).subscribe(
+      () => {
+        this.validate = true;
+        this.failed = null;
+
+        console.log('Success');
+      },
+      () => {
+        this.validate = null;
+        this.failed = true;
+
+        console.log('Failed');
+      },
+      () => {
+        this.init();
+      });
   }
 
   add(film: Film) {
-    this.filmsProvider.add(film).subscribe( ret => {
-      console.log(ret);
-    });
+    this.filmsProvider.add(film).subscribe(
+      () => {
+        this.validate = true;
+        this.failed = null;
+
+        console.log(this.film);
+        console.log('Success');
+      },
+      () => {
+        this.validate = null;
+        this.failed = true;
+
+        console.log(this.film);
+        console.log('Failed');
+      },
+      () => {
+        this.init();
+      }
+    );
   }
 
 }
