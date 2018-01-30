@@ -6,6 +6,7 @@
 
     <TextView
         android:text="Search by title"
+        android:textSize="25sp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         />
@@ -26,7 +27,15 @@
         />
 
     <TextView
+        android:text=""
+        android:textSize="50sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
         android:text="Search by director"
+        android:textSize="25sp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         />
