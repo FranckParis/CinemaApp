@@ -1,3 +1,17 @@
+<div class="container">
+  <div *ngIf="validate">
+    <div class="alert alert-success" role="alert">
+      <strong>Bravo !</strong>
+    </div>
+  </div>
+
+  <div *ngIf="failed">
+    <div class="alert alert-danger" role="alert">
+      <strong>Erreur !</strong>
+    </div>
+  </div>
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -28,7 +42,7 @@
       <div class="modal-footer">
 
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-        <button (click)="add(realisateur)" type="submit" class="btn btn-success">Enregistrer</button>
+        <button (click)="add(realisateur)" type="submit" class="btn btn-success" data-dismiss="modal">Enregistrer</button>
 
       </div>
     </div>

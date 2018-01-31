@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {Personnage} from '../../models/personnage';
 import {PersonnagesProvider} from '../../providers/personnagesProvider';
 import {FilmsProvider} from '../../providers/filmsProvider';
+import {ActeursProvider} from '../../providers/acteursProvider';
+import {Acteur} from '../../models/acteur';
+import {Film} from '../../models/film';
 
 @Component({
   selector: 'app-personnages',
@@ -12,14 +15,29 @@ export class PersonnagesComponent implements OnInit {
 
   personnage: Personnage;
   personnages: Personnage[] = [];
+  acteurs: Acteur[] = [];
+  films: Film[] = [];
+  validate: boolean;
+  failed: boolean;
 
-  constructor(private personnageProvider: PersonnagesProvider, private filmsProvider: FilmsProvider) { }
+  constructor(private personnageProvider: PersonnagesProvider, private filmsProvider: FilmsProvider, private acteursProvider: ActeursProvider) { }
 
-  ngOnInit() {
+  init() {
+    this.personnages = [];
     this.personnage = new Personnage(null, null, null, null);
     this.personnageProvider.getPersonnages().subscribe(personnages => {
       this.parsePersonnages(personnages);
     });
+    this.acteursProvider.getAll().subscribe(acteurs => {
+      this.acteurs = acteurs;
+    });
+    this.filmsProvider.getAll().subscribe(films => {
+      this.films = films;
+    });
+  }
+
+  ngOnInit() {
+    this.init();
   }
 
   parsePersonnages(personnages: any) {
@@ -34,9 +52,23 @@ export class PersonnagesComponent implements OnInit {
   }
 
   add(personnage: Personnage) {
-    this.personnageProvider.add(personnage).subscribe( ret => {
-      console.log(ret);
-    });
+    this.personnageProvider.add(personnage).subscribe(
+      () => {
+        this.validate = true;
+        this.failed = null;
+
+        console.log('Success');
+      },
+      () => {
+        this.validate = null;
+        this.failed = true;
+
+        console.log('Failed');
+      },
+      () => {
+        this.init();
+      }
+    );
   }
 
 }

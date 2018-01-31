@@ -36,24 +36,17 @@ export class FilmsComponent implements OnInit {
   }
 
   init() {
+    this.films = [];
     this.filmsProvider.getAll().subscribe(films => {
       this.parseFilms(films);
-      console.log('bayou1');
-
-      this.realisateursProvider.getRealisateurs().subscribe(realisateurs => {
-        this.realisateurs = realisateurs;
-        console.log('bayou2');
-
-        this.categoriesProvider.getAll().subscribe(categories => {
-          this.categories = categories;
-          console.log('bayou3');
-
-          this.film = new FilmNew(this.autoIncrement(), null, null, null, null, null, null, null);
-        });
-
-      });
-
     });
+    this.realisateursProvider.getRealisateurs().subscribe(realisateurs => {
+      this.realisateurs = realisateurs;
+    });
+    this.categoriesProvider.getAll().subscribe(categories => {
+      this.categories = categories;
+    });
+    this.film = new FilmNew(this.autoIncrement(), null, null, null, null, null, null, null);
   }
 
   ngOnInit() {

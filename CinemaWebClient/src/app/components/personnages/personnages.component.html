@@ -17,6 +17,20 @@
             <label for="nomAct">Nom</label>
             <input [(ngModel)]="personnage.nomPers" type="text" class="form-control" id="nomAct" required>
           </div>
+
+          <div class="form-group">
+            <label for="acteur">Acteur</label>
+            <select [(ngModel)]="personnage.noAct" class="form-control" id="acteur" required>
+              <option *ngFor="let acteur of acteurs" value="{{acteur.noAct}}">{{acteur.prenAct}} {{acteur.nomAct}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="film">Film</label>
+            <select [(ngModel)]="personnage.noFilm" class="form-control" id="film" required>
+              <option *ngFor="let film of films" value="{{film.noFilm}}">{{film.titre}}</option>
+            </select>
+          </div>
         </div>
 
       </div>

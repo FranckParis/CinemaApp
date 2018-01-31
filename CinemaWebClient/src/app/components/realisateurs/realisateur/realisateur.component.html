@@ -1,11 +1,13 @@
-<div class="container">
-
-  <h1>Détails du réalisateur</h1>
+<div class="d-flex justify-content-center">
 
   <div class="row">
-    <div class="col-md-2"></div>
 
     <div class="card">
+
+      <div class="card-header">
+        <h1>Détails d'un réalisateur</h1>
+      </div>
+
       <div class="card-body">
 
         <div *ngIf="realisateur">
@@ -27,6 +29,14 @@
         </div>
 
       </div>
+
+      <div class="card-footer">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" routerLink="/realisateurs">
+          Retour
+        </button>
+      </div>
+
     </div>
 
   </div>
